@@ -1,33 +1,108 @@
-version: '2'
+version: '2.1'
 services:
-  parity:
+  authority0:
     image: ethcore/parity:stable
     command:
-      --chain /dev.json
-      --jsonrpc-interface all
-      --jsonrpc-hosts all
-      --dapps-port 8081
-      --dapps-interface 0.0.0.0
-      --dapps-hosts all
-      --dapps-cors all
-      --ui-interface 0.0.0.0
+      --config /parity/config/config.toml
+      --engine-signer 0x00bd138abd70e2f00903268f3db08f2d25677c9e
       --ui-no-validation
       ui
     ports:
       - 8180:8180
-      - 8545:8545
+      - 8540:8545
     volumes:
-      - parity:/root/.local/share/io.parity.ethereum/
-      - ./parity/dev.json:/dev.json:ro
+      - authority0:/root/.local/share/io.parity.ethereum/
+      - ./parity/keys:/root/.local/share/io.parity.ethereum/keys/parity-poa-playground:ro
+      - ./parity/config:/parity/config:ro
+      - ./parity/node0.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.2
+  authority1:
+    image: ethcore/parity:stable
+    command:
+      --config /parity/config/config.toml
+      --engine-signer 0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2
+      --ui-no-validation
+      ui
+    ports:
+      - 8181:8180
+      - 8541:8545
+    volumes:
+      - authority1:/root/.local/share/io.parity.ethereum/
+      - ./parity/keys:/root/.local/share/io.parity.ethereum/keys/parity-poa-playground:ro
+      - ./parity/config:/parity/config:ro
+      - ./parity/node1.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.3
+  authority2:
+    image: ethcore/parity:stable
+    command:
+      --config /parity/config/config.toml
+      --engine-signer 0x002e28950558fbede1a9675cb113f0bd20912019
+      --ui-no-validation
+      ui
+    ports:
+      - 8182:8180
+      - 8542:8545
+    volumes:
+      - authority2:/root/.local/share/io.parity.ethereum/
+      - ./parity/keys:/root/.local/share/io.parity.ethereum/keys/parity-poa-playground:ro
+      - ./parity/config:/parity/config:ro
+      - ./parity/node2.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.4
   monitor:
     image: buythewhale/ethstats_monitor
     volumes:
       - ./monitor/app.json:/home/ethnetintel/eth-net-intelligence-api/app.json:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.5
   dashboard:
     image: buythewhale/ethstats
     volumes:
       - ./dashboard/ws_secret.json:/eth-netstats/ws_secret.json:ro
     ports:
       - 3001:3000
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.6
+  member0:
+    image: ethcore/parity:stable
+    command: --config /parity/config/config.toml --ui-no-validation ui
+    volumes:
+      - ./parity/config:/parity/config:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.10
+  member1:
+    image: ethcore/parity:stable
+    command: --config /parity/config/config.toml --ui-no-validation ui
+    volumes:
+      - ./parity/config:/parity/config:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.11
+  member2:
+    image: ethcore/parity:stable
+    command: --config /parity/config/config.toml --ui-no-validation ui
+    volumes:
+      - ./parity/config:/parity/config:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.12
 volumes:
-  parity:
+  authority0:
+  authority1:
+  authority2:
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.0.1/24
+        gateway: 172.16.0.1
