@@ -1,3 +1,2 @@
+.gitignore
 .idea
-parity/keys
-parity/config/node.pwds
