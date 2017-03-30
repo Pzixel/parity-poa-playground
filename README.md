@@ -1,11 +1,12 @@
 # parity-poa-playground
 
-Deploy your first Parity POA network with 3 authorities and 3 members.
+Setup your first Parity POA network with 3 authorities and 3 members.
 
 ### Setup
 
+0. Install [docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/)
 1. Run `git clone https://github.com/dstarcev/parity-poa-playground.git && cd parity-poa-playground`
-2. `docker-compose up`
+2. Run `docker-compose up -d`
 
 ### Access the Parity UI
 Run `docker-compose logs | grep token=` to get an authenticated URL for the Parity UI.
