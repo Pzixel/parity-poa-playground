@@ -1,5 +1,6 @@
 # parity-playground
 
+0. Run `git clone github.com:dstarcev/parity-poa-playground.git && cd parity-poa-playground`
 1. `docker-compose up`
 2. Run `docker-compose logs | grep token=` to get an authenticated URL for the Parity UI.
 Yoy will need to copy the authentication token from the output of the previous command to log in.
