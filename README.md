@@ -1,24 +1,37 @@
-# parity-playground
+# parity-poa-playground
 
-0. Run `git clone github.com:dstarcev/parity-poa-playground.git && cd parity-poa-playground`
-1. `docker-compose up`
-2. Run `docker-compose logs | grep token=` to get an authenticated URL for the Parity UI.
-Yoy will need to copy the authentication token from the output of the previous command to log in.
-3. Navigate to [http://127.0.0.1:3001](http://127.0.0.1:3001) for the [ethstats](https://github.com/cubedro/eth-netstats) dashboard.
-4. Talk to JSON RPC at [http://127.0.0.1:8545](http://127.0.0.1:8545) with your favorite client.
+Deploy your first Parity POA network with 3 authorities and 3 members.
 
-You may also want to change the list of prefunded accounts in `parity/chain.json`.
+### Setup
 
-There is already one with an empty password that has enough ether:
+1. Run `git clone https://github.com/dstarcev/parity-poa-playground.git && cd parity-poa-playground`
+2. `docker-compose up`
+
+### Access the Parity UI
+Run `docker-compose logs | grep token=` to get an authenticated URL for the Parity UI.
+
+### Access the [ethstats](https://github.com/cubedro/eth-netstats) dashboard.
+A nice dashboard is already configured and connected with all the nodes.
+Find it at [http://127.0.0.1:3001](http://127.0.0.1:3001).
+
+### Accounts
+There is already an account with an empty password that has enough ether:
 
 ```
 0x6B0c56d1Ad5144b4d37fa6e27DC9afd5C2435c3B
 ```
 
-And one who is broke:
+And another who is broke:
 ```
 0x00E3d1Aa965aAfd61217635E5f99f7c1e567978f
 ```
+
+You may also want to change the list of prefunded accounts in `parity/config/chain.json`.
+
+Add JSON-formatted ethereum accounts to `parity/keys` and they will appear in the UI.
+
+### Access JSON RPC 
+Talk to JSON RPC at [http://127.0.0.1:8545](http://127.0.0.1:8545) with your favorite client.
 
 Be kind and send the poor an ether!
 
