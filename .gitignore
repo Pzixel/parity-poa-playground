@@ -1,3 +1,5 @@
 /.gitignore
 .idea
+.DS_Store
 send.sh
+local.sh
