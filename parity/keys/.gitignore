@@ -2,5 +2,5 @@
 !.gitignore
 
 # keys to keep
-!master.json
-!slave.json
+!/master*.json
+!/slave.json
