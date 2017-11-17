@@ -1,6 +1,6 @@
 # parity-poa-playground
 
-Setup your first Parity POA network with 3 authorities and 3 members.
+Setup your first Parity PoA network with 3 authorities and 3 members.
 
 ### Setup
 
