@@ -68,6 +68,7 @@ services:
     ports:
       - 8180:8180
       - 8546:8546
+      - 30303:30303
     networks:
       app_net:
         ipv4_address: 172.16.0.20
