@@ -9,6 +9,7 @@ services:
       --ws-interface 0.0.0.0
       --ui-interface 0.0.0.0
       --unsafe-expose   
+      --jsonrpc-cors all
     volumes:
       - ./parity/config:/parity/config:ro
       - authority0:/root/.local/share/io.parity.ethereum/
