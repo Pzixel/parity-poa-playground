@@ -5,6 +5,11 @@ services:
     command:
       --config /parity/config/authority.toml
       --engine-signer 0x00bd138abd70e2f00903268f3db08f2d25677c9e
+      --dapps-interface 0.0.0.0
+      --ws-interface 0.0.0.0
+      --ui-interface 0.0.0.0
+      --unsafe-expose   
+      --jsonrpc-cors all
     volumes:
       - ./parity/config:/parity/config:ro
       - authority0:/root/.local/share/io.parity.ethereum/
@@ -64,6 +69,7 @@ services:
     ports:
       - 8180:8180
       - 8546:8546
+      - 30303:30303
     networks:
       app_net:
         ipv4_address: 172.16.0.20
