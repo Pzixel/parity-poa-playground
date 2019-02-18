@@ -22,3 +22,4 @@ reseal_on_txs = "none"
 gas_floor_target = "0x165A0BC00"
 tx_queue_size = 16384
 tx_queue_mem_limit = 1024
+tx_queue_per_sender = 16384
