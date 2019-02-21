@@ -8,6 +8,8 @@ services:
         PARITY_VERSION: ${PARITY_VERSION}
         NETWORK_NAME: ${NETWORK_NAME}
         ID: 0
+    volumes:
+      - data-volume:/home/parity/.local/share/io.parity.ethereum/chains/${NETWORK_NAME}/db
     command:
       --config /parity/config/authority.toml
       --engine-signer 0x00bd138abd70e2f00903268f3db08f2d25677c9e
@@ -124,6 +126,9 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.0.200
+        
+volumes:
+  data-volume:
 networks:
   app_net:
     driver: bridge
