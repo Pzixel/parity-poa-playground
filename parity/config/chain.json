@@ -4,6 +4,7 @@
     "authorityRound": {
       "params": {
         "stepDuration": "5",
+		"emptyStepsTransition" : 0,
         "validators": {
           "list": [
             "0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e",
