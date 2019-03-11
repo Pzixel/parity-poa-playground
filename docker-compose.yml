@@ -18,8 +18,6 @@ services:
       --unsafe-expose
       --jsonrpc-cors all
       --no-persistent-txqueue
-      --jsonrpc-server-threads=8
-      --jsonrpc-threads=8
       --no-discovery
       --fast-unlock
       --no-warp
@@ -50,8 +48,6 @@ services:
       --unsafe-expose
       --jsonrpc-cors all
       --no-persistent-txqueue
-      --jsonrpc-server-threads=8
-      --jsonrpc-threads=8
       --no-discovery
       --fast-unlock
       --no-warp
@@ -77,8 +73,6 @@ services:
       --unsafe-expose
       --jsonrpc-cors all
       --no-persistent-txqueue
-      --jsonrpc-server-threads=8
-      --jsonrpc-threads=8
       --no-discovery
       --fast-unlock
       --no-warp
@@ -101,8 +95,6 @@ services:
       --unsafe-expose
       --jsonrpc-cors all
       --no-persistent-txqueue
-      --jsonrpc-server-threads=8
-      --jsonrpc-threads=8
       --no-discovery
       --fast-unlock
       --no-warp
@@ -126,8 +118,6 @@ services:
       --unsafe-expose
       --jsonrpc-cors all
       --no-persistent-txqueue
-      --jsonrpc-server-threads=8
-      --jsonrpc-threads=8
       --no-discovery
       --fast-unlock
       --no-warp
@@ -151,8 +141,6 @@ services:
       --unsafe-expose
       --jsonrpc-cors all
       --no-persistent-txqueue
-      --jsonrpc-server-threads=8
-      --jsonrpc-threads=8
       --no-discovery
       --fast-unlock
       --no-warp
