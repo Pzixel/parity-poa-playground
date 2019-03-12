@@ -28,7 +28,8 @@
     "eip214Transition": 0,
     "eip658Transition": 0,
     "wasmActivationTransition": 0,
-    "maxTransactionSize": 1000000000
+    "maxTransactionSize": 1000000000,
+	"maxCodeSize": 4294967295
   },
   "genesis": {
     "seal": {
