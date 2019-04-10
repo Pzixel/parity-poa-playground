@@ -8,8 +8,6 @@ services:
         PARITY_VERSION: ${PARITY_VERSION}
         NETWORK_NAME: ${NETWORK_NAME}
         ID: 0
-    volumes:
-      - data-volume:/home/parity/.local/share/io.parity.ethereum/chains/${NETWORK_NAME}/db
     command:
       --config /parity/config/authority.toml
       --engine-signer 0x00bd138abd70e2f00903268f3db08f2d25677c9e
@@ -26,92 +24,6 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.0.10
-
-
-  authority1:
-    build:
-      context: .
-      dockerfile: docker_authority/Dockerfile
-      args:
-        PARITY_VERSION: ${PARITY_VERSION}
-        NETWORK_NAME: ${NETWORK_NAME}
-        ID: 1
-    command:
-      --config /parity/config/authority.toml
-      --engine-signer 0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2
-      --no-persistent-txqueue
-      --fast-unlock
-    networks:
-      app_net:
-        ipv4_address: 172.16.0.11
-
-
-  authority2:
-    build:
-      context: .
-      dockerfile: docker_authority/Dockerfile
-      args:
-        PARITY_VERSION: ${PARITY_VERSION}
-        NETWORK_NAME: ${NETWORK_NAME}
-        ID: 2
-    command:
-      --config /parity/config/authority.toml
-      --engine-signer 0x002e28950558fbede1a9675cb113f0bd20912019
-      --no-persistent-txqueue
-      --fast-unlock
-    networks:
-      app_net:
-        ipv4_address: 172.16.0.12
-
-  member0:
-    build:
-      context: .
-      dockerfile: docker_member/Dockerfile
-      args:
-        PARITY_VERSION: ${PARITY_VERSION}
-        NETWORK_NAME: ${NETWORK_NAME}
-    command:
-      --config /parity/config/member.toml
-      --ws-interface 0.0.0.0
-      --unsafe-expose
-      --no-persistent-txqueue
-      --fast-unlock
-    networks:
-      app_net:
-        ipv4_address: 172.16.0.20
-
-
-  member1:
-    build:
-      context: .
-      dockerfile: docker_member/Dockerfile
-      args:
-        PARITY_VERSION: ${PARITY_VERSION}
-        NETWORK_NAME: ${NETWORK_NAME}
-    command: 
-        --config /parity/config/member.toml
-        --no-persistent-txqueue
-        --fast-unlock
-    networks:
-      app_net:
-        ipv4_address: 172.16.0.21
-
-
-  member2:
-    build:
-      context: .
-      dockerfile: docker_member/Dockerfile
-      args:
-        PARITY_VERSION: ${PARITY_VERSION}
-        NETWORK_NAME: ${NETWORK_NAME}
-    command: 
-        --config /parity/config/member.toml
-        --no-persistent-txqueue
-        --fast-unlock
-    networks:
-      app_net:
-        ipv4_address: 172.16.0.22
-
 
   monitor:
     image: buythewhale/ethstats_monitor
@@ -132,8 +44,6 @@ services:
       app_net:
         ipv4_address: 172.16.0.200
         
-volumes:
-  data-volume:
 networks:
   app_net:
     driver: bridge
